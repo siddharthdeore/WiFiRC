@@ -1,6 +1,5 @@
 /*
-   Program takes compressed input from UDP and sets the value of reqired variable.
-   
+   Program takes compressed input from UDP and sets the value of reqired variable
 */
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
@@ -38,7 +37,7 @@ void setup() {
   WiFi.begin(ssid, password);
   port.begin(localPort);
 
-  Serial.println("Connecting to ");
+  Serial.println("\r\nConnecting to ");
   Serial.print(ssid);
   while (WiFi.status() != WL_CONNECTED) {
     delay(200);
@@ -46,8 +45,8 @@ void setup() {
     digitalWrite(2, _ledState);
     _ledState = !_ledState;
   }
-  Serial.println("WiFi connected");
-  Serial.println("IP");
+  Serial.println("\r\nWiFi connected");
+  Serial.print("IP");
   Serial.print(WiFi.localIP());
   Serial.print(":");
   Serial.println(localPort);
@@ -58,10 +57,10 @@ void loop() {
   int packetSize = port.parsePacket();
   // Serial.println(packetSize);
   if (packetSize) {
-    //digitalWrite(2, 1);
     int len = port.read(packetBuffer, 255);
     if (len > 0) packetBuffer[len] = 0;
     Serial.println(packetBuffer);
+    digitalWrite(LEDPin, HIGH);
 
     s1 = "";
     s2 = "";
@@ -124,7 +123,6 @@ void loop() {
       Serial.print(" CH6 ");      Serial.print(ch[6]);
       Serial.print(" CH7 ");      Serial.print(ch[7]);
       Serial.println();
-      analogWrite(LEDPin, ch[0]/16);
 
     }
   }
@@ -132,7 +130,7 @@ void loop() {
   //port.write("Your UDP packet was received OK\r\n");
   //port.endPacket();
 
-  //digitalWrite(LEDPin, LOW);
+  digitalWrite(LEDPin, LOW);
   delay(50);
 }
 
