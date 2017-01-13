@@ -135,7 +135,7 @@ void loop() {
 }
 
 
-/* Funcction to convert base 64 string to its decimal equivalen*/
+/* Funcction to convert base 64 string to its decimal equivalent*/
 int String2Dec(char *s)
 {
   int x = 0;
