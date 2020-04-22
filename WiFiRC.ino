@@ -24,8 +24,8 @@ uint32_t packetCount = 0, last_sent = 0;
 
 #define LEDPin 2
 WiFiUDP port;
-const char* ssid = "A3s-qm";
-const char* password = "2627F6859715AD1DD294DDC476";
+const char* ssid = "ssid";
+const char* password = "pass";
 
 char packetBuffer[255];
 unsigned int localPort = 2055;
